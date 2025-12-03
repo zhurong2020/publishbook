@@ -38,3 +38,6 @@ venv/
 # 敏感信息
 credentials.json
 secrets.json
+
+# Claude Code 本地配置
+.claude/
