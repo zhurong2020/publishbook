@@ -2,8 +2,10 @@
 """
 书籍构建脚本
 用于从数据文件生成章节内容、统计信息和导出文件
+支持多项目管理
 """
 
+import argparse
 import json
 import os
 from pathlib import Path
@@ -11,14 +13,41 @@ from datetime import datetime
 
 
 class BookBuilder:
-    def __init__(self, project_root: str = None):
-        if project_root is None:
-            project_root = Path(__file__).parent.parent
-        self.root = Path(project_root)
-        self.data_dir = self.root / "data"
-        self.content_dir = self.root / "content"
-        self.output_dir = self.root / "output"
-        self.templates_dir = self.root / "templates"
+    def __init__(self, project_name: str = None):
+        self.script_dir = Path(__file__).parent
+        self.workspace_root = self.script_dir.parent.parent
+
+        if project_name:
+            self.project_root = self.workspace_root / "projects" / project_name
+        else:
+            self.project_root = None
+
+        self.shared_dir = self.workspace_root / "shared"
+        self.output_dir = self.workspace_root / "output"
+
+    def _get_project_dir(self, subdir: str) -> Path:
+        if not self.project_root:
+            raise ValueError("No project specified. Use --project option.")
+        return self.project_root / subdir
+
+    @property
+    def data_dir(self) -> Path:
+        return self._get_project_dir("data")
+
+    @property
+    def content_dir(self) -> Path:
+        return self._get_project_dir("content")
+
+    @property
+    def templates_dir(self) -> Path:
+        return self.shared_dir / "templates"
+
+    def list_projects(self) -> list:
+        """列出所有项目"""
+        projects_dir = self.workspace_root / "projects"
+        if not projects_dir.exists():
+            return []
+        return [p.name for p in projects_dir.iterdir() if p.is_dir()]
 
     def load_vocabulary(self, filename: str = "vocabulary.json") -> dict:
         """加载词汇数据"""
@@ -88,6 +117,7 @@ class BookBuilder:
         words = vocab_data.get("vocabulary", [])
 
         stats = {
+            "project": self.project_root.name if self.project_root else "unknown",
             "total_words": len(words),
             "by_level": {},
             "by_chapter": {},
@@ -115,8 +145,9 @@ class BookBuilder:
         vocab_data = self.load_vocabulary()
         words = vocab_data.get("vocabulary", [])
 
-        output_file = self.output_dir / f"word_list.{format}"
-        self.output_dir.mkdir(parents=True, exist_ok=True)
+        project_name = self.project_root.name if self.project_root else "unknown"
+        output_file = self.output_dir / project_name / f"word_list.{format}"
+        output_file.parent.mkdir(parents=True, exist_ok=True)
 
         if format == "txt":
             content = "\n".join([w["word"] for w in words])
@@ -156,25 +187,57 @@ class BookBuilder:
 
 
 def main():
-    import sys
+    parser = argparse.ArgumentParser(description="书籍构建工具")
+    parser.add_argument("command", nargs="?", choices=["stats", "validate", "export", "list"],
+                       help="执行的命令")
+    parser.add_argument("--project", "-p", help="项目名称")
+    parser.add_argument("--format", "-f", default="txt", choices=["txt", "csv", "json"],
+                       help="导出格式 (默认: txt)")
 
-    builder = BookBuilder()
+    args = parser.parse_args()
 
-    if len(sys.argv) < 2:
-        print("用法: python build.py <command>")
-        print("命令:")
-        print("  stats     - 显示词汇统计")
-        print("  validate  - 验证数据完整性")
-        print("  export    - 导出单词列表")
+    if not args.command:
+        print("用法: python build.py <command> [options]")
+        print("\n命令:")
+        print("  list      - 列出所有项目")
+        print("  stats     - 显示词汇统计 (需要 --project)")
+        print("  validate  - 验证数据完整性 (需要 --project)")
+        print("  export    - 导出单词列表 (需要 --project)")
+        print("\n选项:")
+        print("  --project, -p  项目名称")
+        print("  --format, -f   导出格式 (txt/csv/json)")
+        print("\n示例:")
+        print("  python build.py list")
+        print("  python build.py stats --project vocab-book")
+        print("  python build.py export --project vocab-book --format csv")
         return
 
-    command = sys.argv[1]
+    if args.command == "list":
+        builder = BookBuilder()
+        projects = builder.list_projects()
+        if projects:
+            print("可用项目:")
+            for p in projects:
+                print(f"  - {p}")
+        else:
+            print("暂无项目")
+        return
 
-    if command == "stats":
+    if not args.project:
+        print(f"错误: 命令 '{args.command}' 需要指定 --project 参数")
+        return
+
+    builder = BookBuilder(args.project)
+
+    if not builder.project_root.exists():
+        print(f"错误: 项目 '{args.project}' 不存在")
+        return
+
+    if args.command == "stats":
         stats = builder.generate_statistics()
         print(json.dumps(stats, ensure_ascii=False, indent=2))
 
-    elif command == "validate":
+    elif args.command == "validate":
         errors = builder.validate_vocabulary()
         if errors:
             print("发现以下问题:")
@@ -183,13 +246,9 @@ def main():
         else:
             print("数据验证通过！")
 
-    elif command == "export":
-        format = sys.argv[2] if len(sys.argv) > 2 else "txt"
-        output_file = builder.export_word_list(format)
+    elif args.command == "export":
+        output_file = builder.export_word_list(args.format)
         print(f"已导出到: {output_file}")
-
-    else:
-        print(f"未知命令: {command}")
 
 
 if __name__ == "__main__":

@@ -1,78 +1,100 @@
-# 英文单词学习书籍项目
+# 出版项目工作区 (Publishing Workspace)
 
 ## 项目简介
 
-本项目用于编写和出版一本英文单词学习书籍。
+本仓库采用 Monorepo 结构管理多个出版项目，共享模板、脚本和风格指南。
 
-## 项目结构
+## 仓库结构
 
 ```
 publishbook/
-├── content/                 # 书籍内容
-│   ├── chapters/           # 各章节内容
-│   └── appendices/         # 附录（索引、参考资料等）
-├── data/                   # 数据文件
-│   ├── vocabulary/         # 单词数据（JSON/CSV格式）
-│   └── exercises/          # 练习题数据
-├── templates/              # 排版模板
-├── assets/                 # 资源文件
-│   ├── images/            # 插图、图表
-│   └── audio/             # 音频文件（可选）
-├── scripts/               # 构建和处理脚本
-├── output/                # 输出文件（PDF、EPUB等）
-├── OUTLINE.md             # 书籍大纲
-├── STYLE_GUIDE.md         # 写作风格指南
-└── README.md              # 项目说明
+├── shared/                      # 共享资源
+│   ├── templates/              # 通用模板
+│   │   └── chapter_template.md
+│   ├── scripts/                # 构建脚本
+│   │   └── build.py
+│   └── styles/                 # 风格指南
+│       └── STYLE_GUIDE.md
+│
+├── projects/                    # 各出版项目
+│   ├── vocab-book/             # 项目1: 英文单词书
+│   │   ├── OUTLINE.md
+│   │   ├── content/
+│   │   ├── data/
+│   │   └── assets/
+│   ├── [project-2]/            # 项目2: 待创建
+│   └── [project-3]/            # 项目3: 待创建
+│
+├── output/                      # 统一输出目录
+├── .gitignore
+└── README.md
 ```
 
-## 书籍规划
+## 项目列表
 
-### 目标读者
-- [ ] 初学者（零基础）
-- [ ] 中级学习者（有一定基础）
-- [ ] 高级学习者（备考/专业需求）
-
-### 单词来源
-- [ ] 高频词汇表
-- [ ] 分级词汇（如 CEFR A1-C2）
-- [ ] 考试词汇（托福/雅思/GRE等）
-- [ ] 主题词汇（商务/学术/日常等）
-
-### 内容特色
-- [ ] 词根词缀记忆法
-- [ ] 联想记忆法
-- [ ] 情境例句
-- [ ] 配套练习
-- [ ] 音标与发音指导
-
-## 出版准备清单
-
-### 内容准备
-- [ ] 确定书籍定位和目标读者
-- [ ] 制定单词选取标准
-- [ ] 编写书籍大纲
-- [ ] 完成各章节内容
-- [ ] 设计练习题
-- [ ] 校对和审核
-
-### 技术准备
-- [ ] 选择排版工具（LaTeX/InDesign/Word）
-- [ ] 设计版面布局
-- [ ] 准备插图和图表
-- [ ] 生成索引
-
-### 出版流程
-- [ ] 申请书号（ISBN）
-- [ ] 联系出版社或选择自出版平台
-- [ ] 封面设计
-- [ ] 印刷或电子书制作
+| 项目 | 目录 | 状态 | 描述 |
+|------|------|------|------|
+| 英文单词学习书 | `projects/vocab-book/` | 进行中 | 面向中国学习者的英语词汇书 |
 
 ## 快速开始
 
-1. 阅读 `OUTLINE.md` 了解书籍结构
-2. 在 `data/vocabulary/` 中添加单词数据
-3. 在 `content/chapters/` 中编写章节内容
-4. 使用 `scripts/` 中的脚本生成输出文件
+### 创建新项目
+
+```bash
+# 1. 创建项目目录
+mkdir -p projects/your-project/{content/chapters,content/appendices,data,assets/images}
+
+# 2. 复制模板
+cp shared/templates/chapter_template.md projects/your-project/content/
+
+# 3. 创建项目大纲
+touch projects/your-project/OUTLINE.md
+```
+
+### 使用共享资源
+
+- **模板**: `shared/templates/` - 章节、词条格式模板
+- **脚本**: `shared/scripts/build.py` - 数据验证、统计、导出
+- **风格**: `shared/styles/STYLE_GUIDE.md` - 写作规范
+
+### 构建命令
+
+```bash
+# 查看词汇统计
+python shared/scripts/build.py stats --project vocab-book
+
+# 验证数据完整性
+python shared/scripts/build.py validate --project vocab-book
+
+# 导出单词列表
+python shared/scripts/build.py export --project vocab-book --format csv
+```
+
+## 项目管理原则
+
+1. **独立性**: 每个项目在 `projects/` 下有完整的目录结构
+2. **共享性**: 通用模板和工具放在 `shared/`
+3. **一致性**: 所有项目遵循 `shared/styles/STYLE_GUIDE.md`
+4. **隔离性**: 项目间数据不互相依赖
+
+## 添加新书项目示例
+
+假设要添加一本"商务英语"书籍：
+
+```
+projects/
+└── business-english/
+    ├── OUTLINE.md           # 本书大纲
+    ├── README.md            # 项目说明（可选）
+    ├── content/
+    │   ├── chapters/
+    │   └── appendices/
+    ├── data/
+    │   ├── vocabulary/
+    │   └── exercises/
+    └── assets/
+        └── images/
+```
 
 ## 许可证
 
