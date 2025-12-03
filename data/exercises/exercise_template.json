@@ -1,0 +1,73 @@
+{
+  "exercises": {
+    "chapter": 1,
+    "section": "1.1",
+    "multiple_choice": [
+      {
+        "id": 1,
+        "question": "The teacher used a simple _______ to explain the concept.",
+        "options": {
+          "A": "example",
+          "B": "sample",
+          "C": "model",
+          "D": "pattern"
+        },
+        "answer": "A",
+        "explanation": "example 强调'例证、实例'，用于说明或解释概念最为恰当。"
+      }
+    ],
+    "fill_in_blanks": [
+      {
+        "id": 1,
+        "sentence": "She always _______ a good _______ for her younger siblings.",
+        "blanks": ["sets", "example"],
+        "hint": "set an example 树立榜样",
+        "words_to_use": ["set", "example"]
+      }
+    ],
+    "word_formation": [
+      {
+        "id": 1,
+        "base_word": "example",
+        "forms": {
+          "noun": "example",
+          "verb": "exemplify",
+          "adjective": "exemplary",
+          "adverb": "exemplarily"
+        }
+      }
+    ],
+    "translation": [
+      {
+        "id": 1,
+        "chinese": "这是一个很好的例子。",
+        "english": "This is a good example.",
+        "key_words": ["example"],
+        "difficulty": "easy"
+      }
+    ],
+    "matching": [
+      {
+        "id": 1,
+        "words": ["example", "sample", "model", "pattern"],
+        "definitions": [
+          "a thing illustrating a general rule",
+          "a small part representing the whole",
+          "a standard to be imitated",
+          "a repeated design or sequence"
+        ],
+        "answers": {
+          "example": "a thing illustrating a general rule",
+          "sample": "a small part representing the whole",
+          "model": "a standard to be imitated",
+          "pattern": "a repeated design or sequence"
+        }
+      }
+    ]
+  },
+  "metadata": {
+    "total_questions": 5,
+    "estimated_time": "15 minutes",
+    "difficulty": "beginner"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "vocabulary": [
+    {
+      "id": 1,
+      "word": "example",
+      "phonetic_uk": "/ɪɡˈzɑːmpl/",
+      "phonetic_us": "/ɪɡˈzæmpl/",
+      "part_of_speech": ["noun", "verb"],
+      "definitions": {
+        "chinese": ["例子，实例", "榜样，模范"],
+        "english": [
+          "a thing characteristic of its kind or illustrating a general rule",
+          "a person or thing regarded as worthy of imitation"
+        ]
+      },
+      "examples": [
+        {
+          "sentence": "This is a good example of his work.",
+          "translation": "这是他作品的一个好例子。"
+        },
+        {
+          "sentence": "She sets a good example for the other students.",
+          "translation": "她为其他学生树立了好榜样。"
+        }
+      ],
+      "collocations": [
+        "for example",
+        "set an example",
+        "follow someone's example",
+        "prime example"
+      ],
+      "derivatives": [
+        {
+          "word": "exemplify",
+          "part_of_speech": "verb",
+          "meaning": "举例说明"
+        },
+        {
+          "word": "exemplary",
+          "part_of_speech": "adjective",
+          "meaning": "模范的，典范的"
+        }
+      ],
+      "synonyms": ["instance", "sample", "illustration", "model"],
+      "antonyms": [],
+      "memory_tip": "ex-(出) + ample(拿) = 拿出来展示的东西 = 例子",
+      "confused_words": [
+        {
+          "word": "sample",
+          "difference": "sample强调'样本、样品'，example强调'例证、榜样'"
+        }
+      ],
+      "level": "A1",
+      "frequency": "high",
+      "chapter": 1,
+      "section": "1.1",
+      "tags": ["basic", "daily"]
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-01-01",
+    "total_words": 1,
+    "levels": ["A1", "A2", "B1", "B2", "C1", "C2"],
+    "frequency_levels": ["high", "medium", "low"]
+  }
+}
