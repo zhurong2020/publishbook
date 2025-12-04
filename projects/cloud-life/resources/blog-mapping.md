@@ -15,13 +15,23 @@
 
 ## 第二部分：基础设施篇
 
-| 章节 | 博客文章 | 链接 | 整理状态 |
-|------|----------|------|----------|
-| 第3章 拥有你的专属域名 | 零成本打造云端生活：免费域名注册与Cloudflare托管全攻略 | [链接](https://zhurong2020.github.io/post/ling-cheng-ben-da-zao-yun-duan-sheng-huo-mian-fei-yu-ming-zhu-ce-yu-cloudflare-tuo-guan-quan-gong-lue/) | 待整理 |
+| 章节 | 博客文章 | 发布日期 | 整理状态 |
+|------|----------|----------|----------|
+| 第3章 拥有你的专属域名 | 零成本打造云端生活：免费域名注册与Cloudflare托管全攻略 | - | 待整理 |
 | | NameSilo 域名注册系列 | - | 待整理 |
-| 第4章 你的第一台云服务器 | 云端生活入门：从小白到网络达人 | - | 待整理 |
-| | 轻松拥有自己的VPS，开启你的云端之旅 | - | 待整理 |
+| 第4章 你的第一台云服务器 | 云端启航：轻松拥有自己的VPS，开启你的云端之旅 | 2024-04-18 | 待整理 |
+| | VPS管理指南：掌握PuTTY与WinSCP的协同魔法 | 2024-04-27 | 待整理 |
 | 第5章 给网站加上防护盾 | （包含在免费域名文章中） | - | 待整理 |
+
+### 已发布的云生活基础文章（youxinyanzhe/_posts/）
+
+| 文件名 | 标题 | 发布日期 | 对应章节 |
+|--------|------|----------|----------|
+| `2024-03-23-Selfhosted.md` | 轻松上手：用GitHub开源项目自托管，打造属于你的数字王国 | 2024-03-23 | 前言 / 总览 |
+| `2024-04-18-Purchase-VPS.md` | 云端启航：轻松拥有自己的VPS | 2024-04-18 | 第4章 |
+| `2024-04-27-PuttyWinscp.md` | VPS管理指南：掌握PuTTY与WinSCP | 2024-04-27 | 第4章 |
+
+> 📌 **素材亮点**：`Selfhosted.md` 详细介绍了 Cloudreve（云盘）、Trilium（笔记）、Jellyfin（影音）、NextChat（AI）等自托管项目，可作为全书的引子。
 
 ## 第三部分：个人效率篇
 
@@ -58,14 +68,35 @@
 
 这些文章与云生活第4章"服务器拓展用途"呼应，可作为后续书籍素材：
 
-| 文章标题 | 发布日期 | 链接 | 核心内容 |
-|----------|----------|------|----------|
-| 开源定投策略改造指南 | 2025-09 | [链接](https://zhurong2020.github.io/post/kai-yuan-ding-tou-ce-lue-gai-zao-zhi-nan-cong-shi-yong-zhe-dao-chuang-zao-zhe/) | 从使用者到创造者，AI辅助代码改造 |
-| 2025年TQQQ定投回测分析 | 2025-09 | [链接](https://zhurong2020.github.io/post/2025-nian-tqqq-ding-tou-hui-ce-fen-xi-cong-60hui-che-dao-ying-li-de-ni-xi-zhi-lu/) | 杠杆ETF定投策略回测 |
-| AI助力量化交易：Moomoo自动交易策略 | 2024-11 | [链接](https://zhurong2020.github.io/post/ai-zhu-li-liang-hua-jiao-yi-cong-0-dao-1-da-zao-moomoo-zi-dong-jiao-yi-ce-lue/) | 零基础用AI开发交易机器人 |
-| 期权解套完全指南 | 2025 | - | 期权策略 |
-| 美股被动收入指南 | 2025 | - | 股息与期权收入 |
-| 特斯拉概念股投资全景图 | 2025 | - | 主题投资 |
+### DCA 定投系列（完成度：★★★★★）
+
+| 文件名 | 标题 | 发布日期 | 核心内容 |
+|--------|------|----------|----------|
+| `2025-09-22-from-60-percent-drawdown-to-profit-turnaround.md` | 从-60%回撤到盈利的逆袭之路 | 2025-09-22 | TQQQ 定投实战复盘 |
+| `2025-09-23-tqqq-weekly-vs-daily-analysis.md` | TQQQ定投深度剖析：为什么周投能赢日投？ | 2025-09-23 | 投资频率优化 |
+| `2025-09-24-open-source-dca-strategy-modification-guide.md` | 开源定投策略改造指南：从使用者到创造者 | 2025-09-24 | AI辅助代码改造 |
+
+### 期权与被动收入（完成度：★★★☆☆）
+
+| 文件名 | 标题 | 发布日期 | 核心内容 |
+|--------|------|----------|----------|
+| `2025-09-20-options-repair-complete-guide.md` | 期权解套完全指南 | 2025-09-20 | 期权策略入门 |
+| `2025-09-17-us_stock_passive_income_guide.md` | 美股被动收入指南 | 2025-09-17 | 股息+期权收入 |
+
+### 工具入门
+
+| 文件名 | 标题 | 发布日期 | 核心内容 |
+|--------|------|----------|----------|
+| `2025-01-21-intelligent-dca.md` | 智能投资指南：手把手教你用Moomoo量化工具定投美股 | 2025-01-21 | Moomoo平台入门 |
+
+### 素材目录（_drafts/todos/）
+
+| 目录 | 素材数量 | 说明 |
+|------|----------|------|
+| `investment-finance/` | 15+ 文件 | DCA系统、期权策略、回测分析 |
+| `tech-empowerment/` | 2 文件 | AI辅助量化开发教程 |
+
+> 📌 **重点素材**：`tech-empowerment/04-ai-quant-investment.md` 是完整的 AI 辅助 DCA 策略开发教程，可直接用于《普通人的量化投资》
 
 ### 量化投资文章的关键技术栈
 
