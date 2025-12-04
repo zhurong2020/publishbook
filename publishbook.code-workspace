@@ -1,0 +1,18 @@
+{
+  "folders": [
+    {
+      "name": "📚 publishbook",
+      "path": "."
+    },
+    {
+      "name": "🌐 youxinyanzhe (博客)",
+      "path": "../youxinyanzhe"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/.DS_Store": true
+    }
+  }
+}
